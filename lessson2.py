@@ -52,24 +52,40 @@ else:
 print(my_list)
 
 #6.
-mydict={}
-mycort=()
-megaresult = {}
-result_list = []
-i=0
-list1= []
-list2 = []
-list3 = []
-list4 = []
-while i < 3:
-    i+=1
-    mydict['название']=str(input("название "))
-    mydict['цена']=str(input("цена "))
-    mydict['количество']=str(input("количество "))
-    mydict['ед']=str(input("ед "))
-    mycort=(i,mydict)
-    result_list.append(mycort)
+goods = []
 
+while input("Would you like add product? Enter yes/no: ") == 'yes':
 
+    number = int(input("Enter product number: "))
 
-print(result_list)
+    features = {}
+
+    while input("Would you like add product parameters? Enter yes/no: ") == 'yes':
+
+        feature_key = input("Enter feature product: ")
+
+        feature_value = input("Enter feature value product: ")
+
+        features[feature_key] = feature_value
+
+    goods.append(tuple([number, features]))
+
+print(goods)
+
+#goods = [(1, {'name': 'comp', 'price': '11'}), (2, {'name': 'pri', 'price': '22'})]
+
+analitics = {}
+
+for good in goods:
+
+    for feature_key, feature_value in good[1].items():
+
+        if feature_key in analitics:
+
+            analitics[feature_key].append(feature_value)
+
+        else:
+
+         analitics[feature_key] = [feature_value]
+
+print(analitics)
